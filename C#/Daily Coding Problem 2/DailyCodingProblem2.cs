@@ -23,7 +23,6 @@ namespace Daily_Coding_Problem_2
                 for (var j = 0; j < intArray.Length; j++)
                 {
                     if (j == i) continue;
-
                     newIntArray[i] *= intArray[j];
                 }
             }

@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daily Coding Problem 1", "Daily Coding Problem 1\Daily Coding Problem 1.csproj", "{CC552EB3-4A19-414B-ADC2-48B07B1CA6D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daily Coding Problem 2", "Daily Coding Problem 2\Daily Coding Problem 2.csproj", "{16FF62C6-BED8-4252-8137-FF8EEE365BE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daily Coding Problem 2", "Daily Coding Problem 2\Daily Coding Problem 2.csproj", "{16FF62C6-BED8-4252-8137-FF8EEE365BE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Daily Coding Problem 3", "Daily Coding Problem 3\Daily Coding Problem 3.csproj", "{C11A6411-1F90-4C7A-94AB-FF4F0D322BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{16FF62C6-BED8-4252-8137-FF8EEE365BE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16FF62C6-BED8-4252-8137-FF8EEE365BE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16FF62C6-BED8-4252-8137-FF8EEE365BE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C11A6411-1F90-4C7A-94AB-FF4F0D322BA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C11A6411-1F90-4C7A-94AB-FF4F0D322BA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C11A6411-1F90-4C7A-94AB-FF4F0D322BA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C11A6411-1F90-4C7A-94AB-FF4F0D322BA0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
