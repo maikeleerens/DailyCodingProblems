@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Daily_Coding_Problem_1
 {
     /// <summary>
-    /// 
+    /// This problem was recently asked by Google. <br></br>
+    /// Given a list of numbers and a number k, return whether any two numbers from the list add up to k. <br></br>
+    /// For example, given[10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17. <br></br>
+    /// Bonus: Can you do this in one pass?
     /// </summary>
     public class DailyCodingProblem1
     {
@@ -14,14 +16,11 @@ namespace Daily_Coding_Problem_1
         public void DailyCodingProblem1SolutionTest()
         {
             var numberList = new List<int> {10, 15, 3, 7};
-            var k = 1000;
+            const int k = 17;
 
-            Assert.True(NumbersAreEqual(numberList, k));
-        }
+            var numbersInListAddUpToValue = numberList.Select(number => k - number).Any(numberList.Contains);
 
-        private bool NumbersAreEqual(IEnumerable<int> numberList, int k)
-        {
-            return numberList.Select(number => k - number).Any(numberList.Contains);
+            Assert.True(numbersInListAddUpToValue);
         }
     }
 }
