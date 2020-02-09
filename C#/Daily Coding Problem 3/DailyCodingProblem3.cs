@@ -25,8 +25,6 @@ namespace Daily_Coding_Problem_3
         {
             var node = new Node("root", new Node("left", new Node("left.left")), new Node("right"));
 
-            var test2 = NodeSerializer.Deserialize(NodeSerializer.Serialize(node));
-
             Assert.Equal("left.left", NodeSerializer.Deserialize(NodeSerializer.Serialize(node)).Left.Left.Value);
         }
     }
@@ -34,7 +32,7 @@ namespace Daily_Coding_Problem_3
     /// <summary>
     /// Node class
     /// </summary>
-    public class Node
+    internal class Node
     {
         public string Value { get; set; }
         public Node Left { get; set; }
@@ -49,9 +47,9 @@ namespace Daily_Coding_Problem_3
     }
 
     /// <summary>
-    /// Serializes and deserializes all nodes from a binary tree
+    ///     
     /// </summary>
-    public static class NodeSerializer
+    internal static class NodeSerializer
     {
         private static int _index;
 
@@ -76,7 +74,7 @@ namespace Daily_Coding_Problem_3
 
             if (_index >= nodeList.Length) _index = 0;
 
-            if (nodeList[_index] == "empty")
+            if (nodeList[_index].Contains("empty"))
             {
                 _index++;
                 return null;
