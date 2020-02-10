@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Daily_Coding_Problem_2
+namespace Daily_Coding_Problems.Problem_002
 {
     /// <summary>
     /// This problem was asked by Uber. <br></br>
@@ -8,10 +8,10 @@ namespace Daily_Coding_Problem_2
     /// For example, if our input was[1, 2, 3, 4, 5], the expected output would be[120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be[2, 3, 6]. <br></br>
     /// Follow-up: what if you can't use division?
     /// </summary>
-    public class DailyCodingProblem2
+    public class Problem002
     {
         [Fact]
-        public void DailyCodingProblem2SolutionTest()
+        public void Problem002SolutionTest()
         {
             var intArray = new[] {1, 2, 3, 4, 5};
             var intArray2 = new[] {3, 2, 1};

@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Daily_Coding_Problem_3
+namespace Daily_Coding_Problems.Problem_003
 {
     /// <summary>
     /// This problem was asked by Google. <br></br>
@@ -17,10 +17,10 @@ namespace Daily_Coding_Problem_3
     ///    node = Node('root', Node('left', Node('left.left')), Node('right')) <br></br>
     ///    assert deserialize(serialize(node)).left.left.val == 'left.left' <br></br>
     /// </summary>
-    public class DailyCodingProblem3
+    public class Problem003
     {
         [Fact]
-        public void DailyCodingProblem3SolutionTest()
+        public void Problem003SolutionTest()
         {
             var node = new Node("root", new Node("left", new Node("left.left")), new Node("right"));
 

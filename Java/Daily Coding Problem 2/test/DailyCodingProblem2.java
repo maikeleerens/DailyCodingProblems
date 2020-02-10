@@ -21,7 +21,6 @@ public class DailyCodingProblem2 {
     private static int[] CalculateNewArray(int[] intArray) {
         var returnIntArray = new int[intArray.length];
         for (int i = 0; i < returnIntArray.length; i++) {
-
             returnIntArray[i] = 1;
 
             for (int j = 0; j < intArray.length; j++){

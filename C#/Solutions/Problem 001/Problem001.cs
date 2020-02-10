@@ -2,7 +2,7 @@
 using System.Linq;
 using Xunit;
 
-namespace Daily_Coding_Problem_1
+namespace Daily_Coding_Problems.Problem_001
 {
     /// <summary>
     /// This problem was recently asked by Google. <br></br>
@@ -10,10 +10,10 @@ namespace Daily_Coding_Problem_1
     /// For example, given[10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17. <br></br>
     /// Bonus: Can you do this in one pass?
     /// </summary>
-    public class DailyCodingProblem1
+    public class Problem001
     {
         [Fact]
-        public void DailyCodingProblem1SolutionTest()
+        public void Problem001SolutionTest()
         {
             var numberList = new List<int> {10, 15, 3, 7};
             const int k = 17;
