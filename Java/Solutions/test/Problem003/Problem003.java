@@ -28,7 +28,7 @@ public class Problem003 {
 }
 
 /**
- * Problem003.Node class
+ * A node in a binary tree
  */
 class Node {
     public String Value;

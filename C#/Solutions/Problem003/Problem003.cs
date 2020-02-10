@@ -1,21 +1,21 @@
 ﻿using Xunit;
 
-namespace Solutions.Problem_003
+namespace Solutions.Problem003
 {
     /// <summary>
-    /// This problem was asked by Google. <br></br>
-    /// Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes the string back into the tree. <br></br><br></br>
+    /// This problem was asked by Google.
+    /// Given the root to a binary tree, implement serialize(root), which serializes the tree into a string, and deserialize(s), which deserializes the string back into the tree.
     /// 
-    /// For example, given the following Node class <br></br>
-    /// class Node : <br></br>
-    ///    def __init__(self, val, left=None, right=None): <br></br>
-    ///    self.val = val <br></br>
-    ///   self.left = left <br></br>
-    ///    self.right = right <br></br><br></br>
+    /// For example, given the following Node class
+    /// class Node :
+    ///    def __init__(self, val, left=None, right=None):
+    ///    self.val = val
+    ///    self.left = left
+    ///    self.right = right
     ///
-    /// The following test should pass: <br></br>
-    ///    node = Node('root', Node('left', Node('left.left')), Node('right')) <br></br>
-    ///    assert deserialize(serialize(node)).left.left.val == 'left.left' <br></br>
+    /// The following test should pass:
+    ///    node = Node('root', Node('left', Node('left.left')), Node('right'))
+    ///    assert deserialize(serialize(node)).left.left.val == 'left.left'
     /// </summary>
     public class Problem003
     {
@@ -29,7 +29,7 @@ namespace Solutions.Problem_003
     }
 
     /// <summary>
-    /// Node class
+    /// A node in a binary tree
     /// </summary>
     internal class Node
     {
@@ -46,7 +46,7 @@ namespace Solutions.Problem_003
     }
 
     /// <summary>
-    /// Serializes and Deserializes all <see cref="Node"/> from a binary tree     
+    /// Serializes and deserializes all <see cref="Node"/> from a binary tree     
     /// </summary>
     internal static class NodeSerializer
     {
