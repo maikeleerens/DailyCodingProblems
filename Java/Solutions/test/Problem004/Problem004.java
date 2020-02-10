@@ -1,3 +1,5 @@
+package Problem004;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -7,10 +9,10 @@ import org.junit.Test;
  * For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should give 3.
  * You can modify the input array in-place.
  */
-public class DailyCodingProblem4 {
+public class Problem004 {
 
     @Test
-    public void DailyCodingProblem4SolutionTest() {
+    public void Problem004SolutionTest() {
         var intArray = new int[] {3, 4, -1, 1};
         var intArray2 = new int[] {1, 2, 0};
 

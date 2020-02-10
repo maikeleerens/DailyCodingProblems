@@ -1,3 +1,5 @@
+package Problem002;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -7,10 +9,10 @@ import org.junit.Test;
  * For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
  * Follow-up: what if you can't use division?
  */
-public class DailyCodingProblem2 {
+public class Problem002 {
 
     @Test
-    public void DailyCodingProblem2SolutionTest() {
+    public void Problem002SolutionTest() {
         var intArray = new int[] {1, 2, 3, 4, 5};
         var intArray2 = new int[] {3, 2, 1};
 
