@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Daily_Coding_Problems.Problem_002
+namespace Solutions.Problem_002
 {
     /// <summary>
     /// This problem was asked by Uber. <br></br>

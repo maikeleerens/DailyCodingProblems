@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Daily_Coding_Problems.Problem_003
+namespace Solutions.Problem_003
 {
     /// <summary>
     /// This problem was asked by Google. <br></br>
