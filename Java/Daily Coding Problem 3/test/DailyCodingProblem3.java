@@ -41,25 +41,15 @@ class Node {
 }
 
 /**
- * Serializes and deserializes all nodes from a binary tree
+ * Serializes and deserializes all Nodes from a binary tree
  */
 class NodeSerializer {
     private static int _index;
 
-    /**
-     * Serializes the Node to a String
-     * @param node
-     * The Node to serialize
-     */
     public static String Serialize(Node node) {
         return node == null ? "empty" : node.Value + "-" + Serialize(node.Left) + "-" + Serialize(node.Right);
     }
 
-    /**
-     * Deserializes the serialized String to a Node
-     * @param serializedNode
-     * The serialized string to deserialize
-     */
     public static Node Deserialize(String serializedNode) {
         var nodeList = serializedNode.split("-");
 

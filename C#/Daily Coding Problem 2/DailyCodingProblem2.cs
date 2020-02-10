@@ -14,20 +14,26 @@ namespace Daily_Coding_Problem_2
         public void DailyCodingProblem2SolutionTest()
         {
             var intArray = new[] {1, 2, 3, 4, 5};
-            var newIntArray = new int[intArray.Length];
+            var intArray2 = new[] {3, 2, 1};
 
-            for (var i = 0; i < newIntArray.Length; i++)
+            Assert.Equal(new[] {120, 60, 40, 30, 24 }, CalculateNewIntArray(intArray));
+            Assert.Equal(new[] {2, 3, 6}, CalculateNewIntArray(intArray2));
+        }
+
+        private static int[] CalculateNewIntArray(int[] intArray)
+        {
+            var returnIntArray = new int[intArray.Length];
+
+            for (var i = 0; i < returnIntArray.Length; i++)
             {
-                newIntArray[i] = 1;
+                returnIntArray[i] = 1;
 
                 for (var j = 0; j < intArray.Length; j++)
                 {
-                    if (j == i) continue;
-                    newIntArray[i] *= intArray[j];
+                    if (j != i) returnIntArray[i] *= intArray[j];
                 }
             }
-
-            Assert.Equal(new[] {120, 60, 40, 30, 24 }, newIntArray);
+            return returnIntArray;
         }
     }
 }

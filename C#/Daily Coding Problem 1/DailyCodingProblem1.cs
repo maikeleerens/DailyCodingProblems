@@ -18,9 +18,12 @@ namespace Daily_Coding_Problem_1
             var numberList = new List<int> {10, 15, 3, 7};
             const int k = 17;
 
-            var numbersInListAddUpToValue = numberList.Select(number => k - number).Any(numberList.Contains);
+            Assert.True(NumbersInListAddUpToValue(numberList, k));
+        }
 
-            Assert.True(numbersInListAddUpToValue);
+        private static bool NumbersInListAddUpToValue(IEnumerable<int> numberList, int k)
+        {
+            return numberList.Select(number => k - number).Where(numberList.Contains).Any();
         }
     }
 }

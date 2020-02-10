@@ -46,27 +46,17 @@ namespace Daily_Coding_Problem_3
     }
 
     /// <summary>
-    ///     
+    /// Serializes and Deserializes all <see cref="Node"/> from a binary tree     
     /// </summary>
     internal static class NodeSerializer
     {
         private static int _index;
 
-        /// <summary>
-        /// Serializes the <see cref="Node"/> to a <see cref="string"/>
-        /// </summary>
-        /// <param name="node">The <see cref="Node"/> to serialize</param>
-        /// <returns></returns>
         public static string Serialize(Node node)
         {
             return node == null ? "empty" : $"{node.Value}-{Serialize(node.Left)}-{Serialize(node.Right)}";
         }
 
-        /// <summary>
-        /// Deserializes the serialized <see cref="string"/> to a <see cref="Node"/>
-        /// </summary>
-        /// <param name="serializedNode">The serialized string to deserialize a <see cref="Node"/></param>
-        /// <returns></returns>
         public static Node Deserialize(string serializedNode)
         {
             var nodeList = serializedNode.Split("-");

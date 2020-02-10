@@ -12,17 +12,22 @@ public class DailyCodingProblem2 {
     @Test
     public void DailyCodingProblem2SolutionTest() {
         var intArray = new int[] {1, 2, 3, 4, 5};
-        var newIntArray = new int[intArray.length];
+        var intArray2 = new int[] {3, 2, 1};
 
-        for (int i = 0; i < newIntArray.length; i++) {
+        Assert.assertArrayEquals(new int[] {120, 60, 40, 30, 24}, CalculateNewArray(intArray));
+        Assert.assertArrayEquals(new int[] {2, 3, 6}, CalculateNewArray(intArray2));
+    }
 
-            newIntArray[i] = 1;
+    private static int[] CalculateNewArray(int[] intArray) {
+        var returnIntArray = new int[intArray.length];
+        for (int i = 0; i < returnIntArray.length; i++) {
+
+            returnIntArray[i] = 1;
 
             for (int j = 0; j < intArray.length; j++){
-                if (j == i) continue;
-                newIntArray[i] *= intArray[j];
+                if (j != i) returnIntArray[i] *= intArray[j];
             }
         }
-        Assert.assertArrayEquals(new int[] {120, 60, 40, 30, 24}, newIntArray);
+        return returnIntArray;
     }
 }

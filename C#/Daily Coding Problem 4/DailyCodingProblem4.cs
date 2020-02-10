@@ -21,11 +21,6 @@ namespace Daily_Coding_Problem_4
             Assert.Equal(3, LowestMissingPositiveIntegerFromIntArray(intArray2));
         }
 
-        /// <summary>
-        /// Finds the lowest positive number that is not in the array
-        /// </summary>
-        /// <param name="intArray"></param>
-        /// <returns></returns>
         private static int LowestMissingPositiveIntegerFromIntArray(int[] intArray)
         {
             var lowestNumber = 1;

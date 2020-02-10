@@ -2,6 +2,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * This problem was recently asked by Google.
@@ -14,10 +15,12 @@ public class DailyCodingProblem1 {
     @Test
     public void DailyCodingProblem1SolutionTest(){
         var numberList = Arrays.asList(10, 15, 3, 7);
-        var k = 17;
+        final int k = 17;
 
-        var numbersInListAddUpToValue = numberList.stream().mapToInt(number -> k - number).anyMatch(numberList::contains);
+        Assert.assertTrue(NumbersInListAddUpToValue(numberList, k));
+    }
 
-        Assert.assertTrue(numbersInListAddUpToValue);
+    private static boolean NumbersInListAddUpToValue(List<Integer> numberList, int k) {
+        return numberList.stream().mapToInt(number -> k - number).anyMatch(numberList::contains);
     }
 }
