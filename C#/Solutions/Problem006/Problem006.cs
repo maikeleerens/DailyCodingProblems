@@ -32,53 +32,51 @@ namespace Solutions.Problem006
     /// <typeparam name="T"></typeparam>
     internal class XORList<T>
     {
-        private readonly Dictionary<int, XORListNode<T>> _memory = new Dictionary<int, XORListNode<T>>();
-        private int _memoryAddressCounter;
-        private int _listItemCount;
-        private int _firstNode;
-        private int _lastNode;
-
-        public XORList()
-        {
-            _memory.Add(0, new XORListNode<T>{MemoryAddress = 0, Both = 0 ^ 0});
-            _memoryAddressCounter = 1;
-            _listItemCount = 0;
-            _firstNode = 0;
-            _lastNode = 0;
-        }
+        private readonly IDictionary<int, XORListNode<T>> _memory = new Dictionary<int, XORListNode<T>>();
+        private int _memoryAddress = 1;
+        private bool _hasNodes;
 
         public void Add(T value)
         {
-            if (_memory[_firstNode].MemoryAddress == 0)
+            if (!_hasNodes)
             {
-                _memory.Add(_memoryAddressCounter, new XORListNode<T>{MemoryAddress = _memoryAddressCounter, Both = 0 ^ 0, Value = value});
-                _firstNode = _memoryAddressCounter;
-                _lastNode = _firstNode;
+                _memory.Add(_memoryAddress, new XORListNode<T>(_memoryAddress, 0, value));
+                _hasNodes = true;
             }
             else
             {
-                var lastNode = _memory[_lastNode];
-                var nodeToAdd = new XORListNode<T>{MemoryAddress = _memoryAddressCounter, Both = 0 ^ lastNode.MemoryAddress, Value = value};
-                lastNode.Both ^= nodeToAdd.MemoryAddress;
-                _lastNode = _memoryAddressCounter;
-                _memory.Add(_memoryAddressCounter, nodeToAdd);
+                var currentNode = _memory[1];
+                var previousNode = (XORListNode<T>)null;
+
+                while (true)
+                {
+                    var nextNodeAddress = currentNode.Both ^ (previousNode?.Address ?? 0);
+                    if (nextNodeAddress == 0) break;
+
+                    previousNode = currentNode;
+                    currentNode = _memory[nextNodeAddress];
+                }
+
+                var nodeToAdd = new XORListNode<T>(_memoryAddress, currentNode.Address, value);
+                currentNode.Both ^= nodeToAdd.Address;
+                _memory.Add(_memoryAddress, currentNode);
             }
 
-            _listItemCount++;
-            _memoryAddressCounter++;
+            _memoryAddress++;
         }
 
         public T Get(int index)
         {
-            if (index >= _listItemCount) throw new IndexOutOfRangeException("Index out of range");
-            var currentNode = _memory[_firstNode];
-            var previousNode = _memory[0];
+            if (index >= _memory.Count) throw new IndexOutOfRangeException("Index out of bounds");
+            var currentNode = _memory[1];
+            var previousNode = (XORListNode<T>)null;
 
             for (var i = 0; i < index; i++)
             {
-                var address = previousNode.MemoryAddress ^ currentNode.Both;
+                var nextNodeAddress = currentNode.Both ^ (previousNode?.Address ?? 0);
+
                 previousNode = currentNode;
-                currentNode = _memory[address];
+                currentNode = _memory[nextNodeAddress];
             }
 
             return currentNode.Value;
@@ -91,8 +89,15 @@ namespace Solutions.Problem006
     /// <typeparam name="T"></typeparam>
     internal class XORListNode<T>
     {
-        public int MemoryAddress { get; set; }
+        public int Address { get; set; }
         public int Both { get; set; }
         public T Value { get; set; }
+
+        public XORListNode(int address, int both, T value)
+        {
+            Address = address;
+            Both = both;
+            Value = value;
+        }
     }
 }
