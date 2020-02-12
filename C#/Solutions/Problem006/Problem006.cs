@@ -50,7 +50,7 @@ namespace Solutions.Problem006
             else
             {
                 var currentNode = _memory[1];
-                var previousNode = (XORListNode<T>)null;
+                var previousNode = (XORListNode<T>) null;
 
                 while (true)
                 {
@@ -73,7 +73,7 @@ namespace Solutions.Problem006
         {
             if (index >= _memory.Count) throw new IndexOutOfRangeException("Index out of bounds");
             var currentNode = _memory[1];
-            var previousNode = (XORListNode<T>)null;
+            var previousNode = (XORListNode<T>) null;
 
             for (var i = 0; i < index; i++)
             {

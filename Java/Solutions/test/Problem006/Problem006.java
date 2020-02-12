@@ -47,7 +47,7 @@ class XORList<T> {
             _hasNodes = true;
         } else {
             var currentNode = _memory.get(1);
-            var previousNode = (XORListNode)null;
+            var previousNode = (XORListNode) null;
 
             while(true) {
                 var nextNodeAddress = currentNode.Both ^ (previousNode == null ? 0 : previousNode.Address);
@@ -68,7 +68,7 @@ class XORList<T> {
         if (index >= _memory.size())
             throw new IndexOutOfBoundsException("Index out of bound");
         var currentNode = _memory.get(1);
-        var previousNode = (XORListNode)null;
+        var previousNode = (XORListNode) null;
 
         for (var i = 0; i < index; i++) {
             var nextNodeAddress = currentNode.Both ^ (previousNode == null ? 0 : previousNode.Address);
