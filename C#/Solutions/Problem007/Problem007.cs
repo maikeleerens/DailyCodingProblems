@@ -23,23 +23,30 @@ namespace Solutions.Problem007
         {
             var messageAsString = message.ToString();
             var count = 0;
-            if (messageAsString.Length == 1)
-                count = 1;
+
+            if (messageAsString.Length > 2)
+            {
+                count += IsValidMappedLetter(Convert.ToInt32(messageAsString[..2]))
+                    ? NumberOfWaysToDecodeMessage(Convert.ToInt32(messageAsString.Substring(2, messageAsString.Length - 2)))
+                    : 0;
+                count += NumberOfWaysToDecodeMessage(
+                    Convert.ToInt32(messageAsString.Substring(1, messageAsString.Length - 1)));
+            }
             else if (messageAsString.Length == 2)
             {
-                count = 1 + (message > 26 || message < 1 ? 0 : 1);
+                count += IsValidMappedLetter(Convert.ToInt32(messageAsString)) ? 2 : 1;
             }
-            else
+            else if (messageAsString.Length == 1)
             {
-                count = NumberOfWaysToDecodeMessage(Convert.ToInt32(messageAsString[Range.StartAt(1)]));
-
-               if (Convert.ToInt32(messageAsString[Index.Start..^2]) < 27 || Convert.ToInt32(messageAsString[Index.Start..^2]) > 0)
-               {
-                   count += NumberOfWaysToDecodeMessage(Convert.ToInt32(messageAsString[Range.StartAt(2)]));
-               }
+                count = 1;
             }
 
             return count;
+        }
+
+        private static bool IsValidMappedLetter(int number)
+        {
+            return number < 27 && number > 0;
         }
     }
 }
