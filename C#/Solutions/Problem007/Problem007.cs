@@ -27,7 +27,7 @@ namespace Solutions.Problem007
             if (messageAsString.Length > 2)
             {
                 count += IsValidMappedLetter(Convert.ToInt32(messageAsString[..2]))
-                    ? NumberOfWaysToDecodeMessage(Convert.ToInt32(messageAsString.Substring(2, messageAsString.Length - 2)))
+                    ? NumberOfWaysToDecodeMessage(Convert.ToInt32(messageAsString[2..]))
                     : 0;
                 count += NumberOfWaysToDecodeMessage(
                     Convert.ToInt32(messageAsString.Substring(1, messageAsString.Length - 1)));
