@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Xunit;
 
 namespace Solutions.Problem002
 {
@@ -20,17 +22,17 @@ namespace Solutions.Problem002
             Assert.Equal(new[] {2, 3, 6}, CalculateNewIntArray(intArray2));
         }
 
-        private static int[] CalculateNewIntArray(int[] intArray)
+        private static IReadOnlyCollection<int> CalculateNewIntArray(IReadOnlyCollection<int> numberCollection)
         {
-            var returnIntArray = new int[intArray.Length];
+            var returnIntArray = new int[numberCollection.Count];
 
             for (var i = 0; i < returnIntArray.Length; i++)
             {
                 returnIntArray[i] = 1;
 
-                for (var j = 0; j < intArray.Length; j++)
+                for (var j = 0; j < numberCollection.Count; j++)
                 {
-                    if (j != i) returnIntArray[i] *= intArray[j];
+                    if (j != i) returnIntArray[i] *= numberCollection.ElementAt(j);
                 }
             }
             return returnIntArray;

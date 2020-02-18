@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace Solutions.Problem004
@@ -20,7 +21,7 @@ namespace Solutions.Problem004
             Assert.Equal(3, LowestMissingPositiveIntegerFromIntArray(intArray2));
         }
 
-        private static int LowestMissingPositiveIntegerFromIntArray(int[] intArray)
+        private static int LowestMissingPositiveIntegerFromIntArray(IReadOnlyCollection<int> intArray)
         {
             var lowestNumber = 1;
             while (intArray.Contains(lowestNumber))
