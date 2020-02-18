@@ -37,7 +37,7 @@ namespace Solutions.Problem009
                 if (possibleSum > currentSum)
                 {
                     currentSum = possibleSum;
-                }
+                }   
             }
 
             return currentSum;
