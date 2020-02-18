@@ -3,7 +3,7 @@ package Problem001;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -16,13 +16,13 @@ public class Problem001 {
 
     @Test
     public void Problem001SolutionTest(){
-        var numberList = Arrays.asList(10, 15, 3, 7);
+        var numberList = List.of(10, 15, 3, 7);
         final int k = 17;
 
         Assert.assertTrue(NumbersInListAddUpToValue(numberList, k));
     }
 
-    private static boolean NumbersInListAddUpToValue(List<Integer> numberList, int k) {
-        return numberList.stream().mapToInt(number -> k - number).anyMatch(numberList::contains);
+    private static boolean NumbersInListAddUpToValue(Collection<Integer> numberCollection, int k) {
+        return numberCollection.stream().mapToInt(number -> k - number).anyMatch(numberCollection::contains);
     }
 }

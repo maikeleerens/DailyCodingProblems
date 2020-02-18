@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
 namespace Solutions.Problem009
@@ -26,14 +25,14 @@ namespace Solutions.Problem009
             Assert.Equal(10, FindLargestSumNonAdjacent(intList2));
         }
 
-        private static int FindLargestSumNonAdjacent(IReadOnlyCollection<int> numberList)
+        private static int FindLargestSumNonAdjacent(IReadOnlyCollection<int> numberCollection)
         {
             var lastSum = 0;
-            var currentSum = numberList.ElementAt(0);
+            var currentSum = numberCollection.ElementAt(0);
 
-            for (var i = 1; i < numberList.Count; i++)
+            for (var i = 1; i < numberCollection.Count; i++)
             {
-                var possibleSum = Math.Max(numberList.ElementAt(i) + lastSum, numberList.ElementAt(i));
+                var possibleSum = Math.Max(numberCollection.ElementAt(i) + lastSum, numberCollection.ElementAt(i));
                 lastSum = currentSum;
                 if (possibleSum > currentSum)
                 {
