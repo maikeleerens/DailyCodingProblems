@@ -96,6 +96,9 @@ namespace Solutions.Problem011
             return returnList;
         }
 
+        /// <summary>
+        /// Node in a <see cref="Trie"/>
+        /// </summary>
         protected class TrieNode
         {
             public IDictionary<char, TrieNode> SubNodes { get; }
