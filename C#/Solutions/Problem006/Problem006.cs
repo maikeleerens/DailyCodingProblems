@@ -36,7 +36,7 @@ namespace Solutions.Problem006
     /// <typeparam name="T"></typeparam>
     internal class XORList<T>
     {
-        private readonly IDictionary<int, XORListNode<T>> _memory = new Dictionary<int, XORListNode<T>>();
+        private readonly IDictionary<int, XORListNode> _memory = new Dictionary<int, XORListNode>();
         private int _memoryAddress = 1;
         private bool _hasNodes;
 
@@ -44,13 +44,13 @@ namespace Solutions.Problem006
         {
             if (!_hasNodes)
             {
-                _memory.Add(_memoryAddress, new XORListNode<T>(_memoryAddress, 0, value));
+                _memory.Add(_memoryAddress, new XORListNode(_memoryAddress, 0, value));
                 _hasNodes = true;
             }
             else
             {
                 var currentNode = _memory[1];
-                var previousNode = (XORListNode<T>) null;
+                var previousNode = (XORListNode) null;
 
                 while (true)
                 {
@@ -61,7 +61,7 @@ namespace Solutions.Problem006
                     currentNode = _memory[nextNodeAddress];
                 }
 
-                var nodeToAdd = new XORListNode<T>(_memoryAddress, currentNode.Address, value);
+                var nodeToAdd = new XORListNode(_memoryAddress, currentNode.Address, value);
                 currentNode.Both ^= nodeToAdd.Address;
                 _memory.Add(_memoryAddress, nodeToAdd);
             }
@@ -73,7 +73,7 @@ namespace Solutions.Problem006
         {
             if (index >= _memory.Count) throw new IndexOutOfRangeException("Index out of bounds");
             var currentNode = _memory[1];
-            var previousNode = (XORListNode<T>) null;
+            var previousNode = (XORListNode) null;
 
             for (var i = 0; i < index; i++)
             {
@@ -85,23 +85,23 @@ namespace Solutions.Problem006
 
             return currentNode.Value;
         }
-    }
 
-    /// <summary>
-    /// Nodes in a <see cref="XORList{T}"/>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    internal class XORListNode<T>
-    {
-        public int Address { get; set; }
-        public int Both { get; set; }
-        public T Value { get; set; }
-
-        public XORListNode(int address, int both, T value)
+        /// <summary>
+        /// Nodes in a <see cref="XORList{T}"/>
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        protected class XORListNode
         {
-            Address = address;
-            Both = both;
-            Value = value;
+            public int Address { get; set; }
+            public int Both { get; set; }
+            public T Value { get; set; }
+
+            public XORListNode(int address, int both, T value)
+            {
+                Address = address;
+                Both = both;
+                Value = value;
+            }
         }
     }
 }
