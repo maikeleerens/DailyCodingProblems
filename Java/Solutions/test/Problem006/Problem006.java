@@ -37,13 +37,13 @@ public class Problem006 {
  * XOR Linked list containing XOR list nodes
  */
 class XORList<T> {
-    private final Map<Integer, XORListNode<T>> _memory = new HashMap<Integer, XORListNode<T>>();
+    private final Map<Integer, XORListNode> _memory = new HashMap<Integer, XORListNode>();
     private int _memoryAddress = 1;
     private boolean _hasNodes;
 
     public void Add(T value) {
         if (!_hasNodes) {
-            _memory.put(_memoryAddress, new XORListNode<T>(_memoryAddress, 0, value));
+            _memory.put(_memoryAddress, new XORListNode(_memoryAddress, 0, value));
             _hasNodes = true;
         } else {
             var currentNode = _memory.get(1);
@@ -57,7 +57,7 @@ class XORList<T> {
                 currentNode = _memory.get(nextNodeAddress);
             }
 
-            var nodeToAdd = new XORListNode<T>(_memoryAddress, currentNode.Address, value);
+            var nodeToAdd = new XORListNode(_memoryAddress, currentNode.Address, value);
             currentNode.Both ^= nodeToAdd.Address;
             _memory.put(_memoryAddress, nodeToAdd);
         }
@@ -79,19 +79,19 @@ class XORList<T> {
 
         return  currentNode.Value;
     }
-}
 
-/**
- * Node in a XOR linked list
- */
-class XORListNode<T> {
-    public int Address;
-    public int Both;
-    public T Value;
+    /**
+     * Node in a XOR linked list
+     */
+    protected class XORListNode {
+        public int Address;
+        public int Both;
+        public T Value;
 
-    public XORListNode(int address, int both, T value) {
-        Address = address;
-        Both = both;
-        Value = value;
+        public XORListNode(int address, int both, T value) {
+            Address = address;
+            Both = both;
+            Value = value;
+        }
     }
 }
