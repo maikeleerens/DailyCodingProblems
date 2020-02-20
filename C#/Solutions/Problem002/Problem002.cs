@@ -24,7 +24,7 @@ namespace Solutions.Problem002
             Assert.Equal(new[] {2, 3, 6}, CalculateNewIntArray(intArray2));
         }
 
-        private static IReadOnlyCollection<int> CalculateNewIntArray(IReadOnlyCollection<int> numberCollection)
+        public static IReadOnlyCollection<int> CalculateNewIntArray(IReadOnlyCollection<int> numberCollection)
         {
             var returnIntArray = new int[numberCollection.Count];
 

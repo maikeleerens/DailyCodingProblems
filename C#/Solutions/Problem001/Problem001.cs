@@ -21,7 +21,7 @@ namespace Solutions.Problem001
             Assert.True(NumbersInListAddUpToValue(numberList, k));
         }
 
-        private static bool NumbersInListAddUpToValue(IReadOnlyCollection<int> numberCollection, int k)
+        public static bool NumbersInListAddUpToValue(IReadOnlyCollection<int> numberCollection, int k)
         {
             return numberCollection.Select(number => k - number).Where(numberCollection.Contains).Any();
         }

@@ -28,7 +28,7 @@ namespace Solutions.Problem005
     /// Creates a pair of <see cref="T"/>
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal class Pair<T>
+    public class Pair<T>
     {
         private readonly T _a;
         private readonly T _b;

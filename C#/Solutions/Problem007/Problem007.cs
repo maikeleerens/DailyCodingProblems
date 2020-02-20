@@ -18,7 +18,7 @@ namespace Solutions.Problem007
             Assert.Equal(3, NumberOfWaysToDecodeMessage(111));
         }
 
-        private static int NumberOfWaysToDecodeMessage(int message)
+        public static int NumberOfWaysToDecodeMessage(int message)
         {
             var messageAsString = message.ToString();
             var count = 0;

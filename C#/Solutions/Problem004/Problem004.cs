@@ -21,7 +21,7 @@ namespace Solutions.Problem004
             Assert.Equal(3, LowestMissingPositiveIntegerFromIntArray(intArray2));
         }
 
-        private static int LowestMissingPositiveIntegerFromIntArray(IReadOnlyCollection<int> intArray)
+        public static int LowestMissingPositiveIntegerFromIntArray(IReadOnlyCollection<int> intArray)
         {
             var lowestNumber = 1;
             while (intArray.Contains(lowestNumber))

@@ -31,9 +31,9 @@ namespace Solutions.Problem003
     /// <summary>
     /// A node in a binary tree
     /// </summary>
-    internal class Node
+    public class Node
     {
-        public string Value { get; set; }
+        public string Value { get; }
         public Node Left { get; set; }
         public Node Right { get; set; }
 
@@ -48,7 +48,7 @@ namespace Solutions.Problem003
     /// <summary>
     /// Serializes and deserializes all <see cref="Node"/> from a binary tree     
     /// </summary>
-    internal static class NodeSerializer
+    public static class NodeSerializer
     {
         private static int _index;
 

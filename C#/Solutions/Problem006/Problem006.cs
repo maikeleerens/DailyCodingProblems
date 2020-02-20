@@ -34,7 +34,7 @@ namespace Solutions.Problem006
     /// XOR linked list containing <see cref="XORListNode{T}"/>
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    internal class XORList<T>
+    public class XORList<T>
     {
         private readonly IDictionary<int, XORListNode> _memory = new Dictionary<int, XORListNode>();
         private int _memoryAddress = 1;
@@ -90,11 +90,11 @@ namespace Solutions.Problem006
         /// Nodes in a <see cref="XORList{T}"/>
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        protected class XORListNode
+        protected internal class XORListNode
         {
-            public int Address { get; set; }
+            public int Address { get; }
             public int Both { get; set; }
-            public T Value { get; set; }
+            public T Value { get; }
 
             public XORListNode(int address, int both, T value)
             {

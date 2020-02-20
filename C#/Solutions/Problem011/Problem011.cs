@@ -31,12 +31,13 @@ namespace Solutions.Problem011
     /// <summary>
     /// Prefix tree. https://en.wikipedia.org/wiki/Trie
     /// </summary>
-    internal class Trie
+    public class Trie
     {
-        private readonly TrieNode head = new TrieNode();
+        private readonly TrieNode _head = new TrieNode();
+
         public void Add(string word)
         {
-            AddRecursive(head, word);
+            AddRecursive(_head, word);
         }
 
         private void AddRecursive(TrieNode node, string subString, string currentString = "")
@@ -70,7 +71,7 @@ namespace Solutions.Problem011
 
         public IReadOnlyList<string> Search(string searchString)
         {
-            var node = head;
+            var node = _head;
             foreach (var searchChar in searchString)
             {
                 if (!node.SubNodes.ContainsKey(searchChar))
@@ -99,7 +100,7 @@ namespace Solutions.Problem011
         /// <summary>
         /// Node in a <see cref="Trie"/>
         /// </summary>
-        protected class TrieNode
+        protected internal class TrieNode
         {
             public IDictionary<char, TrieNode> SubNodes { get; }
             public string Word { get; }

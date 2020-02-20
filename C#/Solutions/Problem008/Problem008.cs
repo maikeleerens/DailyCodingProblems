@@ -25,7 +25,7 @@ namespace Solutions.Problem008
             Assert.Equal(5, NumberOfUnivalSubTrees(new Node("0", new Node("1"), new Node("0", new Node("1", new Node("1"), new Node("1")), new Node("0")))));
         }
 
-        private static int NumberOfUnivalSubTrees(Node node)
+        public static int NumberOfUnivalSubTrees(Node node)
         {
             var univalSubTreeCount = 0;
 
@@ -58,9 +58,9 @@ namespace Solutions.Problem008
     /// <summary>
     /// A node in a binary tree
     /// </summary>
-    internal class Node
+    public class Node
     {
-        public string Value { get; set; }
+        public string Value { get; }
         public Node Left { get; set; }
         public Node Right { get; set; }
 
