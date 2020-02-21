@@ -16,15 +16,15 @@ import java.util.*;
 public class Problem009 {
 
     @Test
-    public void Problem009SolutionTest() {
+    public void problem009SolutionTest() {
         var intList1 = List.of(2, 4, 6, 2, 5);
         var intList2 = List.of(5, 1, 1, 5);
 
-        Assert.assertEquals(13, FindLargestSumNonAdjacent(intList1));
-        Assert.assertEquals(10, FindLargestSumNonAdjacent(intList2));
+        Assert.assertEquals(13, findLargestSumNonAdjacent(intList1));
+        Assert.assertEquals(10, findLargestSumNonAdjacent(intList2));
     }
 
-    private static int FindLargestSumNonAdjacent(List<Integer> numberList) {
+    public static int findLargestSumNonAdjacent(List<Integer> numberList) {
         var lastSum = 0;
         var currentSum = numberList.get(0);
 

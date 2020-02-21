@@ -3,6 +3,7 @@ package Problem006;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,15 +22,15 @@ import java.util.Map;
 public class Problem006 {
 
     @Test
-    public void Problem006SolutionTest() {
+    public void problem006SolutionTest() {
         var XORList = new XORList<Integer>();
-        XORList.Add(10);
-        XORList.Add(20);
-        XORList.Add(30);
+        XORList.add(10);
+        XORList.add(20);
+        XORList.add(30);
 
-        Assert.assertEquals(10, (int)XORList.Get(0));
-        Assert.assertEquals(20, (int)XORList.Get(1));
-        Assert.assertEquals(30, (int)XORList.Get(2));
+        Assert.assertEquals(10, (int)XORList.get(0));
+        Assert.assertEquals(20, (int)XORList.get(1));
+        Assert.assertEquals(30, (int)XORList.get(2));
     }
 }
 
@@ -41,57 +42,73 @@ class XORList<T> {
     private int _memoryAddress = 1;
     private boolean _hasNodes;
 
-    public void Add(T value) {
+    public void add(T value) {
         if (!_hasNodes) {
-            _memory.put(_memoryAddress, new XORListNode(_memoryAddress, 0, value));
+            _memory.put(_memoryAddress, new XORListNode(_memoryAddress, value, 0));
             _hasNodes = true;
         } else {
             var currentNode = _memory.get(1);
             var previousNode = (XORListNode) null;
 
             while(true) {
-                var nextNodeAddress = currentNode.Both ^ (previousNode == null ? 0 : previousNode.Address);
+                var nextNodeAddress = currentNode.getBoth() ^ (previousNode == null ? 0 : previousNode.getAddress());
                 if (nextNodeAddress == 0) break;
 
                 previousNode = currentNode;
                 currentNode = _memory.get(nextNodeAddress);
             }
 
-            var nodeToAdd = new XORListNode(_memoryAddress, currentNode.Address, value);
-            currentNode.Both ^= nodeToAdd.Address;
+            var nodeToAdd = new XORListNode(_memoryAddress, value, currentNode.getAddress());
+            currentNode.setBoth(currentNode.getBoth() ^ nodeToAdd.getAddress());
             _memory.put(_memoryAddress, nodeToAdd);
         }
         _memoryAddress++;
     }
 
-    public T Get(int index) {
+    public T get(int index) {
         if (index >= _memory.size())
             throw new IndexOutOfBoundsException("Index out of bound");
         var currentNode = _memory.get(1);
         var previousNode = (XORListNode) null;
 
         for (var i = 0; i < index; i++) {
-            var nextNodeAddress = currentNode.Both ^ (previousNode == null ? 0 : previousNode.Address);
+            var nextNodeAddress = currentNode.getBoth() ^ (previousNode == null ? 0 : previousNode.getAddress());
 
             previousNode = currentNode;
             currentNode = _memory.get(nextNodeAddress);
         }
 
-        return  currentNode.Value;
+        return  currentNode.getValue();
     }
 
     /**
      * Node in a XOR linked list
      */
     protected class XORListNode {
-        public int Address;
-        public int Both;
-        public T Value;
+        private final int address;
+        private final T value;
+        private int both;
 
-        public XORListNode(int address, int both, T value) {
-            Address = address;
-            Both = both;
-            Value = value;
+        public XORListNode(int address, T value, int both) {
+            this.address = address;
+            this.value = value;
+            this.both = both;
+        }
+
+        public int getAddress() {
+            return address;
+        }
+
+        public int getBoth() {
+            return both;
+        }
+
+        public void setBoth(int both) {
+            this.both = both;
+        }
+
+        public T getValue() {
+            return value;
         }
     }
 }

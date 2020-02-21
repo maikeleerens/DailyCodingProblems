@@ -12,15 +12,15 @@ import org.junit.Test;
 public class Problem004 {
 
     @Test
-    public void Problem004SolutionTest() {
+    public void problem004SolutionTest() {
         var intArray = new int[] {3, 4, -1, 1};
         var intArray2 = new int[] {1, 2, 0};
 
-        Assert.assertEquals(2, LowestMissingPositiveIntegerFromIntArray(intArray));
-        Assert.assertEquals(3, LowestMissingPositiveIntegerFromIntArray(intArray2));
+        Assert.assertEquals(2, lowestMissingPositiveIntegerFromIntArray(intArray));
+        Assert.assertEquals(3, lowestMissingPositiveIntegerFromIntArray(intArray2));
     }
 
-    private static int LowestMissingPositiveIntegerFromIntArray(int[] intArray) {
+    public static int lowestMissingPositiveIntegerFromIntArray(int[] intArray) {
         var lowestNumber = 1;
 
         for (var number:

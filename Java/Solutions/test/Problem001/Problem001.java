@@ -15,14 +15,14 @@ import java.util.List;
 public class Problem001 {
 
     @Test
-    public void Problem001SolutionTest(){
+    public void problem001SolutionTest(){
         var numberList = List.of(10, 15, 3, 7);
         final int k = 17;
 
-        Assert.assertTrue(NumbersInListAddUpToValue(numberList, k));
+        Assert.assertTrue(numbersInListAddUpToValue(numberList, k));
     }
 
-    private static boolean NumbersInListAddUpToValue(Collection<Integer> numberCollection, int k) {
+    public static boolean numbersInListAddUpToValue(Collection<Integer> numberCollection, int k) {
         return numberCollection.stream().mapToInt(number -> k - number).anyMatch(numberCollection::contains);
     }
 }

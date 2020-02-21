@@ -20,10 +20,10 @@ import org.junit.Test;
 public class Problem003 {
 
     @Test
-    public void Problem003SolutionTest(){
+    public void problem003SolutionTest(){
         var node = new Node("root",new Node("left",new Node("left.left", null, null) ,null) ,new Node("right", null, null) );
 
-        Assert.assertEquals("left.left", NodeSerializer.Deserialize(NodeSerializer.Serialize(node)).Left.Left.Value);
+        Assert.assertEquals("left.left", NodeSerializer.deserialize(NodeSerializer.serialize(node)).getLeft().getLeft().getValue());
     }
 }
 
@@ -31,14 +31,34 @@ public class Problem003 {
  * A node in a binary tree
  */
 class Node {
-    public String Value;
-    public Node Left;
-    public Node Right;
+    private final String value;
+    private Node left;
+    private Node right;
 
     public Node(String value, Node left, Node right) {
-        Value = value;
-        Left = left;
-        Right = right;
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public void setLeft(Node left) {
+        this.left = left;
+    }
+
+    public Node getRight() {
+        return right;
+    }
+
+    public void setRight(Node right) {
+        this.right = right;
     }
 }
 
@@ -48,11 +68,11 @@ class Node {
 class NodeSerializer {
     private static int _index;
 
-    public static String Serialize(Node node) {
-        return node == null ? "empty" : node.Value + "-" + Serialize(node.Left) + "-" + Serialize(node.Right);
+    public static String serialize(Node node) {
+        return node == null ? "empty" : node.getValue() + "-" + serialize(node.getLeft()) + "-" + serialize(node.getRight());
     }
 
-    public static Node Deserialize(String serializedNode) {
+    public static Node deserialize(String serializedNode) {
         var nodeList = serializedNode.split("-");
 
         if (_index >= nodeList.length) _index = 0;
@@ -65,8 +85,8 @@ class NodeSerializer {
 
         var nodeToReturn = new Node(nodeList[_index], null, null);
         _index++;
-        nodeToReturn.Left = Deserialize(serializedNode);
-        nodeToReturn.Right = Deserialize(serializedNode);
+        nodeToReturn.setLeft(deserialize(serializedNode));
+        nodeToReturn.setRight(deserialize(serializedNode));
         return nodeToReturn;
     }
 }

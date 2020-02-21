@@ -12,15 +12,15 @@ import org.junit.Test;
 public class Problem002 {
 
     @Test
-    public void Problem002SolutionTest() {
+    public void problem002SolutionTest() {
         var intArray = new int[] {1, 2, 3, 4, 5};
         var intArray2 = new int[] {3, 2, 1};
 
-        Assert.assertArrayEquals(new int[] {120, 60, 40, 30, 24}, CalculateNewArray(intArray));
-        Assert.assertArrayEquals(new int[] {2, 3, 6}, CalculateNewArray(intArray2));
+        Assert.assertArrayEquals(new int[] {120, 60, 40, 30, 24}, calculateNewArray(intArray));
+        Assert.assertArrayEquals(new int[] {2, 3, 6}, calculateNewArray(intArray2));
     }
 
-    private static int[] CalculateNewArray(int[] intArray) {
+    public static int[] calculateNewArray(int[] intArray) {
         var returnIntArray = new int[intArray.length];
         for (int i = 0; i < returnIntArray.length; i++) {
             returnIntArray[i] = 1;

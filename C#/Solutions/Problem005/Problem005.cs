@@ -33,7 +33,7 @@ namespace Solutions.Problem005
         private readonly T _a;
         private readonly T _b;
 
-        public Pair(T a, T b)
+        private Pair(T a, T b)
         {
             _a = a;
             _b = b;

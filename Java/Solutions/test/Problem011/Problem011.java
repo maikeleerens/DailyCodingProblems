@@ -17,13 +17,13 @@ import java.util.*;
 public class Problem011 {
 
     @Test
-    public void Problem011SolutionTest() {
+    public void problem011SolutionTest() {
         var trie = new Trie();
-        trie.Add("dog");
-        trie.Add("dear");
-        trie.Add("deal");
+        trie.add("dog");
+        trie.add("dear");
+        trie.add("deal");
 
-        Assert.assertEquals(2, trie.Search("de").size());
+        Assert.assertEquals(2, trie.search("de").size());
     }
 }
 
@@ -31,60 +31,60 @@ public class Problem011 {
  * Prefix tree. https://en.wikipedia.org/wiki/Trie
  */
 class Trie {
-    private final TrieNode head = new TrieNode("");
+    private final TrieNode _head = new TrieNode("");
 
-    public void Add(String word) {
-        AddRecursive(head, word, "");
+    public void add(String word) {
+        addRecursive(_head, word, "");
     }
 
-    private void AddRecursive(TrieNode node, String subString, String currentString) {
+    private void addRecursive(TrieNode node, String subString, String currentString) {
         while(true) {
             if (subString.length() == 0) {
                 break;
             }
 
             var prefixChar = subString.charAt(0);
-            if (!node.SubNodes.containsKey(prefixChar)) {
-                node.SubNodes.put(prefixChar, new TrieNode(currentString + prefixChar));
+            if (!node.getSubNodes().containsKey(prefixChar)) {
+                node.getSubNodes().put(prefixChar, new TrieNode(currentString + prefixChar));
             }
 
             var remainingSubString = subString.substring(1);
             if (remainingSubString.length() == 0) {
-                node.SubNodes.get(prefixChar).IsWord = true;
+                node.getSubNodes().get(prefixChar).setWord(true);
                 break;
             }
 
-            node = node.SubNodes.get(prefixChar);
+            node = node.getSubNodes().get(prefixChar);
             subString = remainingSubString;
             currentString += prefixChar;
         }
     }
 
-    public List<String> Search(String searchString) {
-        var node = head;
+    public List<String> search(String searchString) {
+        var node = _head;
         var charArray = new char[searchString.length()];
         searchString.getChars(0, searchString.length(), charArray, 0);
 
         for (var searchChar:
              charArray) {
-            if (!node.SubNodes.containsKey(searchChar)) {
+            if (!node.getSubNodes().containsKey(searchChar)) {
                 return Collections.emptyList();
             }
-            node = node.SubNodes.get(searchChar);
+            node = node.getSubNodes().get(searchChar);
         }
-        return SearchRecursive(node);
+        return searchRecursive(node);
     }
 
-    private List<String> SearchRecursive(TrieNode node) {
+    private List<String> searchRecursive(TrieNode node) {
         var returnList = new ArrayList<String>();
-        if (node.IsWord) {
-            returnList.add(node.Word);
+        if (node.isWord()) {
+            returnList.add(node.getWord());
         }
 
         for (var subNode:
-             node.SubNodes.entrySet()) {
+             node.getSubNodes().entrySet()) {
             for (var result:
-                 SearchRecursive(subNode.getValue())) {
+                 searchRecursive(subNode.getValue())) {
                 returnList.add(result);
             }
         }
@@ -95,14 +95,30 @@ class Trie {
      * Node in a Trie
      */
     protected class TrieNode {
-        public final Map<Character, TrieNode> SubNodes;
-        public final String Word;
-        public boolean IsWord;
+        private final Map<Character, TrieNode> subNodes;
+        private final String word;
+        private boolean isWord;
 
         public TrieNode(String word) {
-            SubNodes = new HashMap<>();
-            Word = word;
-            IsWord = false;
+            this.subNodes = new HashMap<>();
+            this.word = word;
+            this.isWord = false;
+        }
+
+        public Map<Character, TrieNode> getSubNodes() {
+            return subNodes;
+        }
+
+        public String getWord() {
+            return word;
+        }
+
+        public boolean isWord() {
+            return isWord;
+        }
+
+        public void setWord(boolean word) {
+            isWord = word;
         }
     }
 }

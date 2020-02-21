@@ -13,11 +13,11 @@ import org.junit.Test;
 public class Problem007 {
 
     @Test
-    public void Problem007SolutionTest() {
+    public void problem007SolutionTest() {
         Assert.assertEquals(3, numberOfWaysToDecodeMessage(111));
     }
 
-    private static int numberOfWaysToDecodeMessage(int message) {
+    public static int numberOfWaysToDecodeMessage(int message) {
         var messageAsString = String.valueOf(message);
         var count = 0;
 

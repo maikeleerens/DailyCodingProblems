@@ -13,20 +13,20 @@ import java.util.function.Function;
 public class Problem010 {
 
     @Test
-    public void Problem010SolutionTest() {
+    public void problem010SolutionTest() {
         Assert.assertEquals("done", jobScheduler((Void) -> function(), 5000));
     }
 
-    private static String function() {
-        return "done";
-    }
-
-    private static String jobScheduler(Function<Void, String> f, int n) {
+    public static String jobScheduler(Function<Void, String> f, int n) {
         try {
             Thread.sleep(n);
         } catch (InterruptedException ex) {
             return null;
         }
         return f.apply(null);
+    }
+
+    private static String function() {
+        return "done";
     }
 }

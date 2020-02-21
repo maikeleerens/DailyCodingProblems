@@ -48,7 +48,7 @@ namespace Solutions.Problem003
     /// <summary>
     /// Serializes and deserializes all <see cref="Node"/> from a binary tree     
     /// </summary>
-    public static class NodeSerializer
+    public class NodeSerializer
     {
         private static int _index;
 

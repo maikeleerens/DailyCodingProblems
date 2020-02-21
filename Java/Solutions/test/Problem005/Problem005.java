@@ -16,11 +16,11 @@ import org.junit.Test;
 public class Problem005 {
 
     @Test
-    public void Problem005SolutionTest(){
+    public void problem005SolutionTest(){
         var pair = Pair.cons(3, 4);
 
-        Assert.assertEquals(3, (int)Pair.Car(pair));
-        Assert.assertEquals(4, (int)Pair.Cdr(pair));
+        Assert.assertEquals(3, (int)Pair.car(pair));
+        Assert.assertEquals(4, (int)Pair.cdr(pair));
     }
 }
 
@@ -31,7 +31,7 @@ class Pair<T> {
     private T _a;
     private T _b;
 
-    public Pair(T a, T b) {
+    private Pair(T a, T b) {
         _a = a;
         _b = b;
     }
@@ -40,11 +40,11 @@ class Pair<T> {
         return new Pair<T>(a, b);
     }
 
-    public static <T> T Car(Pair<T> pair) {
+    public static <T> T car(Pair<T> pair) {
         return pair._a;
     }
 
-    public static <T> T Cdr(Pair<T> pair) {
+    public static <T> T cdr(Pair<T> pair) {
         return pair._b;
     }
 }

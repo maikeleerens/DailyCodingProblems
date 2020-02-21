@@ -61,8 +61,8 @@ namespace Solutions.Problem008
     public class Node
     {
         public string Value { get; }
-        public Node Left { get; set; }
-        public Node Right { get; set; }
+        public Node Left { get; }
+        public Node Right { get; }
 
         public Node(string value, Node left = null, Node right = null)
         {

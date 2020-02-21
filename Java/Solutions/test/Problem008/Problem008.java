@@ -21,33 +21,33 @@ import org.junit.Test;
 public class Problem008 {
 
     @Test
-    public void Problem008SolutionTest(){
+    public void problem008SolutionTest(){
         Assert.assertEquals(5, numberOfUnivalSubTrees(new Node("0", new Node("1", null, null), new Node("0", new Node("1", new Node("1", null, null), new Node("1", null, null)), new Node("0", null, null)))));
     }
 
-    private static int numberOfUnivalSubTrees(Node node) {
+    public static int numberOfUnivalSubTrees(Node node) {
         var univalSubTreeCount = 0;
 
         if (node == null) return univalSubTreeCount;
 
         if (isUnival(node)) univalSubTreeCount += 1;
 
-        if (node.Left != null) {
-            univalSubTreeCount += numberOfUnivalSubTrees(node.Left);
+        if (node.getLeft() != null) {
+            univalSubTreeCount += numberOfUnivalSubTrees(node.getLeft());
         }
 
-        if (node.Right != null) {
-            univalSubTreeCount += numberOfUnivalSubTrees(node.Right);
+        if (node.getRight() != null) {
+            univalSubTreeCount += numberOfUnivalSubTrees(node.getRight());
         }
 
         return univalSubTreeCount;
     }
 
     private static boolean isUnival(Node node) {
-        if (node.Left == null && node.Right == null) return true;
-        if (node.Left == null || node.Right == null) return false;
-        if (node.Value != node.Left.Value || node.Value != node.Right.Value) return false;
-        return isUnival(node.Left) || isUnival(node.Right);
+        if (node.getLeft() == null && node.getRight() == null) return true;
+        if (node.getLeft() == null || node.getRight() == null) return false;
+        if (node.getValue() != node.getLeft().getValue() || node.getValue() != node.getRight().getValue()) return false;
+        return isUnival(node.getLeft()) || isUnival(node.getRight());
     }
 }
 
@@ -55,13 +55,25 @@ public class Problem008 {
  * A node in a binary tree
  */
 class Node {
-    public String Value;
-    public Node Left;
-    public Node Right;
+    private final String value;
+    private final Node left;
+    private final Node right;
 
     public Node(String value, Node left, Node right) {
-        Value = value;
-        Left = left;
-        Right = right;
+        this.value = value;
+        this.left = left;
+        this.right = right;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public Node getLeft() {
+        return left;
+    }
+
+    public Node getRight() {
+        return right;
     }
 }
