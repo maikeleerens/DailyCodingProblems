@@ -41,10 +41,7 @@ namespace Solutions.Problem012
 
             if (totalStepsClimbed > totalSteps) return 0;
 
-            if (totalStepsClimbed == totalSteps)
-            {
-                return 1;
-            }
+            if (totalStepsClimbed == totalSteps) return 1;
 
             for (var i = 0; i < stepClimbCollection.Count; i++)
             {
