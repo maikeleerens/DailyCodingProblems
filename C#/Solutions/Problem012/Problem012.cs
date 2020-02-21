@@ -26,30 +26,34 @@ namespace Solutions.Problem012
             var intArray = new[] {1, 2};
             var intArray2 = new[] {1, 3, 5};
 
-            //Assert.Equal(5, NumberOfWaysToClimbStaircase(4, intArray));
+            Assert.Equal(5, NumberOfWaysToClimbStaircase(4, intArray));
             Assert.Equal(3, NumberOfWaysToClimbStaircase(4, intArray2));
         }
 
-        private static int NumberOfWaysToClimbStaircase(int totalSteps, IReadOnlyCollection<int> stepClimbCollection)
+        public static int NumberOfWaysToClimbStaircase(int totalSteps, IReadOnlyCollection<int> stepClimbCollection)
+        {
+            return NumberOfWaysRecursive(totalSteps, stepClimbCollection);
+        }
+
+        private static int NumberOfWaysRecursive(int totalSteps, IReadOnlyCollection<int> stepClimbCollection, int totalStepsClimbed = 0)
         {
             var counter = 0;
 
-            for (var i = 0; i < stepClimbCollection.Count; i++)
+            if (totalStepsClimbed > totalSteps) return 0;
+
+            if (totalStepsClimbed == totalSteps)
             {
-                if (totalSteps % stepClimbCollection.ElementAt(i) == 0)
-                {
-                    counter++;
-                }
+                return 1;
             }
 
-            return counter += NumberOfWaysRecursive(totalSteps, stepClimbCollection);
-        }
+            for (var i = 0; i < stepClimbCollection.Count; i++)
+            {
+                var nextClimb = totalStepsClimbed + stepClimbCollection.ElementAt(i);
 
-        private static int NumberOfWaysRecursive(int totalSteps, IReadOnlyCollection<int> stepClimbCollection)
-        {
-            
+                counter += NumberOfWaysRecursive(totalSteps, stepClimbCollection, nextClimb);
+            }
 
-            return 1;
+            return counter;
         }
     }
 }
