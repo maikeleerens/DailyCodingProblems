@@ -18,7 +18,7 @@ namespace Solutions.Problem013
             Assert.Equal(3, LongestSubStringWithDistinctCharacters(2, "abcba"));
         }
 
-        public static int LongestSubStringWithDistinctCharacter(int k, string s)
+        public static int LongestSubStringWithDistinctCharacters(int k, string s)
         {
             return FindLongestSubStringRecursive(k, s);
         }
