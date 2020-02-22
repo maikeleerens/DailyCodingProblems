@@ -45,9 +45,9 @@ namespace Solutions.Problem012
 
             for (var i = 0; i < stepClimbCollection.Count; i++)
             {
-                var nextClimb = totalStepsClimbed + stepClimbCollection.ElementAt(i);
+                var nextStep = totalStepsClimbed + stepClimbCollection.ElementAt(i);
 
-                counter += NumberOfWaysRecursive(totalSteps, stepClimbCollection, nextClimb);
+                counter += NumberOfWaysRecursive(totalSteps, stepClimbCollection, nextStep);
             }
 
             return counter;
