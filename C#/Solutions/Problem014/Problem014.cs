@@ -15,7 +15,7 @@ namespace Solutions.Problem014
         [Fact]
         public void Problem014SolutionTest()
         {
-            Assert.Equal(3.141, Math.Round(EstimatePi(100000000), 3));
+            Assert.Equal(3.141, Math.Round(EstimatePi(100000000), 3, MidpointRounding.ToZero));
         }
 
         public static double EstimatePi(int numberOfRuns)

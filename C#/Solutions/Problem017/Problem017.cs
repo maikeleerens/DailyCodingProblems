@@ -49,13 +49,18 @@ namespace Solutions.Problem017
         [Fact]
         public void Problem017SolutionTest()
         {
+            Assert.Equal(20, LongestAbsolutePathToFile("dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"));
             Assert.Equal(32, LongestAbsolutePathToFile("dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"));
         }
 
         public static int LongestAbsolutePathToFile(string fileSystem)
         {
-            var values = new List<(string, int)>();
+            if (!fileSystem.Contains(".")) 
+                return 0;
+
             var fileSystemStringArray = fileSystem.Split("\n");
+
+            var values = new List<(string, int)>();
             foreach (var value in fileSystemStringArray)
             {
                 var depthIndex = value.Split('\t').Length;
@@ -64,23 +69,21 @@ namespace Solutions.Problem017
 
             var longestAbsolutePath = string.Empty;
 
-            var deepestFile = values.Aggregate((l, r) => l.Item2 > r.Item2 ? l : r);
+            var deepestFile = values.Where(x => x.Item1.Contains(".")).Aggregate((l, r) => (l.Item2 > r.Item2)  ? l : r);
+
             values.Reverse();
-            var index = values.IndexOf(deepestFile);
+            var indexOfDeepestFile = values.IndexOf(deepestFile);
+            var deepestFileDepth = deepestFile.Item2;
 
-            for (var i = index; i < values.Count; i++)
+            for (var i = indexOfDeepestFile; i < values.Count; i++)
             {
-                if (values[i].Item2 > values[i + 1].Item2)
-                {
-                    longestAbsolutePath = $"{values[i].Item1.Trim('\t')}/{longestAbsolutePath}";
-                }
+                if (deepestFileDepth < values[i].Item2) continue;
+
+                longestAbsolutePath = $"{values[i].Item1.Trim('\t')}/{longestAbsolutePath}";
+                deepestFileDepth--;
             }
-            
 
-            //longestAbsolutePath = values[index].Item2 < values[index+1].Item2 ? ;
-
-
-            return 1;
+            return longestAbsolutePath[..^1].Length;
         }
     }
 }
