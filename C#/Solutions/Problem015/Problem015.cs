@@ -27,12 +27,12 @@ namespace Solutions.Problem015
     /// <typeparam name="T"></typeparam>
     public class StreamHelper<T>
     {
-        public static T GetRandomElementFromStream(IReadOnlyCollection<T> stream)
+        public static T GetRandomElementFromStream(IReadOnlyList<T> stream)
         {
             var random = new Random();
             var randomElement = random.Next(0, stream.Count);
 
-            return stream.ElementAt(randomElement);
+            return stream[randomElement];
         }
     }
 }

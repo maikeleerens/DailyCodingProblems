@@ -25,14 +25,14 @@ namespace Solutions.Problem009
             Assert.Equal(10, FindLargestSumNonAdjacent(intList2));
         }
 
-        public static int FindLargestSumNonAdjacent(IReadOnlyCollection<int> numberCollection)
+        public static int FindLargestSumNonAdjacent(IReadOnlyList<int> numberCollection)
         {
             var lastSum = 0;
-            var currentSum = numberCollection.ElementAt(0);
+            var currentSum = numberCollection[0];
 
             for (var i = 1; i < numberCollection.Count; i++)
             {
-                var possibleSum = Math.Max(numberCollection.ElementAt(i) + lastSum, numberCollection.ElementAt(i));
+                var possibleSum = Math.Max(numberCollection[i] + lastSum, numberCollection[i]);
                 lastSum = currentSum;
                 if (possibleSum > currentSum)
                 {

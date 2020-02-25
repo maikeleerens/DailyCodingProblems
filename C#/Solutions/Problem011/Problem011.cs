@@ -69,7 +69,7 @@ namespace Solutions.Problem011
             }
         }
 
-        public IReadOnlyList<string> Search(string searchString)
+        public IReadOnlyCollection<string> Search(string searchString)
         {
             var node = _head;
             foreach (var searchChar in searchString)
@@ -84,7 +84,7 @@ namespace Solutions.Problem011
             return SearchRecursive(node);
         }
 
-        private IReadOnlyList<string> SearchRecursive(TrieNode node)
+        private IReadOnlyCollection<string> SearchRecursive(TrieNode node)
         {
             var returnList = new List<string>();
             if (node.IsWord)

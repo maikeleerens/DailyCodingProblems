@@ -24,7 +24,7 @@ namespace Solutions.Problem002
             Assert.Equal(new[] {2, 3, 6}, CalculateNewIntArray(intArray2));
         }
 
-        public static IReadOnlyCollection<int> CalculateNewIntArray(IReadOnlyCollection<int> numberCollection)
+        public static IReadOnlyCollection<int> CalculateNewIntArray(IReadOnlyList<int> numberCollection)
         {
             var returnIntArray = new int[numberCollection.Count];
 
@@ -34,7 +34,7 @@ namespace Solutions.Problem002
 
                 for (var j = 0; j < numberCollection.Count; j++)
                 {
-                    if (j != i) returnIntArray[i] *= numberCollection.ElementAt(j);
+                    if (j != i) returnIntArray[i] *= numberCollection[j];
                 }
             }
             return returnIntArray;
