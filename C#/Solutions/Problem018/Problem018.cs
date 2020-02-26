@@ -35,9 +35,7 @@ namespace Solutions.Problem018
             var returnArray = new int[numberCollection.Count-(k-1)];
             for (var i = 0; i < returnArray.Length; i++)
             {
-                var currentHighestSubArrayValue = numberCollection.Skip(i).Take(k).Max();
-
-                returnArray[i] = currentHighestSubArrayValue;
+                returnArray[i] = numberCollection.Skip(i).Take(k).Max();
             }
 
             return returnArray;
