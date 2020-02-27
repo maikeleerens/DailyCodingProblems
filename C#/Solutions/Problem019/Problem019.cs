@@ -17,11 +17,14 @@ namespace Solutions.Problem019
         [Fact]
         public void Problem019SolutionTest()
         {
-            Assert.Equal(4, GetMinimumCost(3, 3));
-            Assert.Equal(6, GetMinimumCost(4, 4));
+            var customTestList = new List<int[]>{new []{ 14, 2, 11 }, new []{ 11, 14, 5 }, new []{ 14, 3, 10 } };
+            
+            Assert.Equal(4, GetMinimumPaintCost(3, 3));
+            Assert.Equal(6, GetMinimumPaintCost(4, 4));
+            Assert.Equal(10, GetMinimumPaintCost(customTestList));
         }
 
-        public static int GetMinimumCost(int n, int k)
+        public static int GetMinimumPaintCost(int n, int k)
         {
            var costs = new List<int[]>();
 
@@ -35,10 +38,10 @@ namespace Solutions.Problem019
                costs.Add(colors);
            }
 
-           return GetMinimumCost(costs);
+           return GetMinimumPaintCost(costs);
         }
 
-        private static int GetMinimumCost(IEnumerable<int[]> costs)
+        public static int GetMinimumPaintCost(IEnumerable<int[]> costs)
         {
             var currentMinimumCost = 0;
             var lastUsedColorIndex = -1;
