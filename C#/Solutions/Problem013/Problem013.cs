@@ -20,11 +20,12 @@ namespace Solutions.Problem013
 
         public static int LongestSubStringWithDistinctCharacters(int k, string s)
         {
-            return FindLongestSubStringRecursive(k, s);
+            return FindLongestSubString(k, s);
         }
 
-        private static int FindLongestSubStringRecursive(int k, string s, int currentMaxLength = 0)
+        private static int FindLongestSubString(int k, string s)
         {
+            var currentMaxLength = 0;
             while (s.Length > 0)
             {
                 var foundCharacters = new List<char>();

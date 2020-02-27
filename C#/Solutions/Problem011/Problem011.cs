@@ -37,11 +37,13 @@ namespace Solutions.Problem011
 
         public void Add(string word)
         {
-            AddRecursive(_head, word);
+            Add(_head, word);
         }
 
-        private void AddRecursive(TrieNode node, string subString, string currentString = "")
+        private static void Add(TrieNode node, string subString)
         {
+            var currentString = string.Empty;
+
             while (true)
             {
                 if (subString.Length == 0)
@@ -81,10 +83,10 @@ namespace Solutions.Problem011
                 node = node.SubNodes[searchChar];
             }
 
-            return SearchRecursive(node);
+            return Search(node);
         }
 
-        private IReadOnlyCollection<string> SearchRecursive(TrieNode node)
+        private static IReadOnlyCollection<string> Search(TrieNode node)
         {
             var returnList = new List<string>();
             if (node.IsWord)
@@ -92,7 +94,7 @@ namespace Solutions.Problem011
                 returnList.Add(node.Word);
             }
 
-            returnList.AddRange(node.SubNodes.SelectMany(subNode => SearchRecursive(subNode.Value)));
+            returnList.AddRange(node.SubNodes.SelectMany(subNode => Search(subNode.Value)));
 
             return returnList;
         }

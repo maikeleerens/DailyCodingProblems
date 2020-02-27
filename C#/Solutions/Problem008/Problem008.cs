@@ -22,36 +22,36 @@ namespace Solutions.Problem008
         [Fact]
         public void Problem008SolutionTest()
         {
-            Assert.Equal(5, NumberOfUnivalSubTrees(new Node("0", new Node("1"), new Node("0", new Node("1", new Node("1"), new Node("1")), new Node("0")))));
+            Assert.Equal(5, NumberOfUniversalSubTrees(new Node("0", new Node("1"), new Node("0", new Node("1", new Node("1"), new Node("1")), new Node("0")))));
         }
 
-        public static int NumberOfUnivalSubTrees(Node node)
+        public static int NumberOfUniversalSubTrees(Node node)
         {
-            var univalSubTreeCount = 0;
+            var universalSubTreeCount = 0;
 
-            if (node == null) return univalSubTreeCount;
+            if (node == null) return universalSubTreeCount;
 
-            if (IsUnival(node)) univalSubTreeCount += 1;
+            if (IsUniversal(node)) universalSubTreeCount += 1;
 
             if (node.Left != null)
             {
-                univalSubTreeCount += NumberOfUnivalSubTrees(node.Left);
+                universalSubTreeCount += NumberOfUniversalSubTrees(node.Left);
             }
 
             if (node.Right != null)
             {
-                univalSubTreeCount += NumberOfUnivalSubTrees(node.Right);
+                universalSubTreeCount += NumberOfUniversalSubTrees(node.Right);
             }
 
-            return univalSubTreeCount;
+            return universalSubTreeCount;
         }
 
-        private static bool IsUnival(Node node)
+        private static bool IsUniversal(Node node)
         {
             if (node.Left == null && node.Right == null) return true;
             if (node.Left == null || node.Right == null) return false;
             if (node.Value != node.Left.Value || node.Value != node.Right.Value) return false;
-            return IsUnival(node.Left) && IsUnival(node.Right);
+            return IsUniversal(node.Left) && IsUniversal(node.Right);
         }
     }
 
