@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * This problem was asked by Facebook.
@@ -36,7 +37,6 @@ public class Problem019 {
             }
             costs.add(colors);
         }
-
         return getMinimumPaintCost(costs);
     }
 
@@ -47,7 +47,7 @@ public class Problem019 {
         for (var colors:
              costs) {
             var lowestCostValue = Arrays.stream(colors).min().getAsInt();
-            var indexOfLowestCostValue = Arrays.asList(colors).indexOf(lowestCostValue);
+            var indexOfLowestCostValue = IntStream.range(0, colors.length).filter(i -> lowestCostValue == colors[i]).findFirst().orElse(-1);
 
             if (lastUsedColorIndex != indexOfLowestCostValue) {
                 currentMinimumCost += lowestCostValue;

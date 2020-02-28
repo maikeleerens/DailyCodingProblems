@@ -3,8 +3,6 @@ package Problem017;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javafx.util.Pair;
-
 import java.util.*;
 
 /**
@@ -55,11 +53,11 @@ public class Problem017 {
 
         var fileSystemStringArray = fileSystem.split("\n");
 
-        var values = new ArrayList<Pair<String, Integer>>();
+        var values = new ArrayList<AbstractMap.SimpleEntry<String, Integer>>();
         for (var value:
              fileSystemStringArray) {
             var depthLevel = value.split("\t").length;
-            values.add(new Pair<>(value, depthLevel));
+            values.add(new AbstractMap.SimpleEntry<>(value, depthLevel));
         }
 
         var longestAbsolutePath = "";
