@@ -20,10 +20,12 @@ public class Problem013 {
     }
 
     public static int longestSubStringWithDistinctCharacters(int k, String s) {
-        return findLongestSubStringRecursive(k, s, 0);
+        return findLongestSubString(k, s);
     }
 
-    private static int findLongestSubStringRecursive(int k, String s, int currentMaxLength) {
+    private static int findLongestSubString(int k, String s) {
+        var currentMaxLength = 0;
+
         while (s.length() > 0) {
             var foundCharacters = new ArrayList<Character>();
 

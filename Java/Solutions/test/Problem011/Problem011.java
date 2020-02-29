@@ -34,10 +34,11 @@ class Trie {
     private final TrieNode _head = new TrieNode("");
 
     public void add(String word) {
-        addRecursive(_head, word, "");
+        add(_head, word);
     }
 
-    private void addRecursive(TrieNode node, String subString, String currentString) {
+    private void add(TrieNode node, String subString) {
+        var currentString = "";
         while(true) {
             if (subString.length() == 0) {
                 break;
@@ -72,10 +73,10 @@ class Trie {
             }
             node = node.getSubNodes().get(searchChar);
         }
-        return searchRecursive(node);
+        return search(node);
     }
 
-    private List<String> searchRecursive(TrieNode node) {
+    private List<String> search(TrieNode node) {
         var returnList = new ArrayList<String>();
         if (node.isWord()) {
             returnList.add(node.getWord());
@@ -84,7 +85,7 @@ class Trie {
         for (var subNode:
              node.getSubNodes().entrySet()) {
             for (var result:
-                 searchRecursive(subNode.getValue())) {
+                 search(subNode.getValue())) {
                 returnList.add(result);
             }
         }

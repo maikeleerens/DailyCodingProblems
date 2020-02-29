@@ -29,10 +29,10 @@ public class Problem012 {
     }
 
     public static int numberOfWaysToClimbStaircase(int totalSteps, int[] stepClimbCollection) {
-        return numberOfWaysRecrusive(totalSteps, stepClimbCollection, 0);
+        return numberOfWaysRecursive(totalSteps, stepClimbCollection, 0);
     }
 
-    private static int numberOfWaysRecrusive(int totalSteps, int[] stepClimbCollection, int totalStepsClimbed) {
+    private static int numberOfWaysRecursive(int totalSteps, int[] stepClimbCollection, int totalStepsClimbed) {
         var counter = 0;
 
         if (totalStepsClimbed > totalSteps) return 0;
@@ -42,7 +42,7 @@ public class Problem012 {
         for (var i = 0; i < stepClimbCollection.length; i++) {
             var nextStep = totalStepsClimbed + stepClimbCollection[i];
 
-            counter += numberOfWaysRecrusive(totalSteps, stepClimbCollection, nextStep);
+            counter += numberOfWaysRecursive(totalSteps, stepClimbCollection, nextStep);
         }
 
         return counter;

@@ -22,32 +22,32 @@ public class Problem008 {
 
     @Test
     public void problem008SolutionTest(){
-        Assert.assertEquals(5, numberOfUnivalSubTrees(new Node("0", new Node("1", null, null), new Node("0", new Node("1", new Node("1", null, null), new Node("1", null, null)), new Node("0", null, null)))));
+        Assert.assertEquals(5, numberOfUniversalSubTrees(new Node("0", new Node("1", null, null), new Node("0", new Node("1", new Node("1", null, null), new Node("1", null, null)), new Node("0", null, null)))));
     }
 
-    public static int numberOfUnivalSubTrees(Node node) {
-        var univalSubTreeCount = 0;
+    public static int numberOfUniversalSubTrees(Node node) {
+        var universalSubTreeCount = 0;
 
-        if (node == null) return univalSubTreeCount;
+        if (node == null) return universalSubTreeCount;
 
-        if (isUnival(node)) univalSubTreeCount += 1;
+        if (isUniversal(node)) universalSubTreeCount += 1;
 
         if (node.getLeft() != null) {
-            univalSubTreeCount += numberOfUnivalSubTrees(node.getLeft());
+            universalSubTreeCount += numberOfUniversalSubTrees(node.getLeft());
         }
 
         if (node.getRight() != null) {
-            univalSubTreeCount += numberOfUnivalSubTrees(node.getRight());
+            universalSubTreeCount += numberOfUniversalSubTrees(node.getRight());
         }
 
-        return univalSubTreeCount;
+        return universalSubTreeCount;
     }
 
-    private static boolean isUnival(Node node) {
+    private static boolean isUniversal(Node node) {
         if (node.getLeft() == null && node.getRight() == null) return true;
         if (node.getLeft() == null || node.getRight() == null) return false;
         if (node.getValue() != node.getLeft().getValue() || node.getValue() != node.getRight().getValue()) return false;
-        return isUnival(node.getLeft()) || isUnival(node.getRight());
+        return isUniversal(node.getLeft()) || isUniversal(node.getRight());
     }
 }
 
