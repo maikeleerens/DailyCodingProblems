@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Solutions.Problem007
+namespace DailyCodingProblems.Solutions.Problem007
 {
     /// <summary>
     /// This problem was asked by Facebook.

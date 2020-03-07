@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
-namespace Solutions.Problem016
+namespace DailyCodingProblems.Solutions.Problem016
 {
     /// <summary>
     /// This problem was asked by Twitter.
@@ -28,35 +27,6 @@ namespace Solutions.Problem016
             Assert.Equal(1, log.GetLast(3));
             Assert.Equal(2, log.GetLast(2));
             Assert.Equal(3, log.GetLast(1));
-        }
-    }
-
-    /// <summary>
-    /// Log that contains the orderIds
-    /// </summary>
-    public class Log
-    {
-        private readonly IList<int> _log;
-
-        public int Size { get; }
-
-        public Log(int size)
-        {
-            _log = new List<int>();
-            Size = size;
-        }
-
-        public void Record(int orderId)
-        {
-            if (_log.Count == Size)
-                _log.RemoveAt(0);
-
-            _log.Add(orderId);
-        }
-
-        public int GetLast(int i)
-        {
-            return _log[^i];
         }
     }
 }

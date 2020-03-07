@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace Solutions.Problem018
+namespace DailyCodingProblems.Solutions.Problem018
 {
     /// <summary>
     /// This problem was asked by Google.

@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Solutions.Problem003
+namespace DailyCodingProblems.Solutions.Problem003
 {
     /// <summary>
     /// This problem was asked by Google.
@@ -25,55 +25,6 @@ namespace Solutions.Problem003
             var node = new Node("root", new Node("left", new Node("left.left")), new Node("right"));
 
             Assert.Equal("left.left", NodeSerializer.Deserialize(NodeSerializer.Serialize(node)).Left.Left.Value);
-        }
-    }
-
-    /// <summary>
-    /// A node in a binary tree
-    /// </summary>
-    public class Node
-    {
-        public string Value { get; }
-        public Node Left { get; set; }
-        public Node Right { get; set; }
-
-        public Node(string value, Node left = null, Node right = null)
-        {
-            Value = value;
-            Left = left;
-            Right = right;
-        }
-    }
-
-    /// <summary>
-    /// Serializes and deserializes all <see cref="Node"/> from a binary tree     
-    /// </summary>
-    public class NodeSerializer
-    {
-        private static int _index;
-
-        public static string Serialize(Node node)
-        {
-            return node == null ? "empty" : $"{node.Value}-{Serialize(node.Left)}-{Serialize(node.Right)}";
-        }
-
-        public static Node Deserialize(string serializedNode)
-        {
-            var nodeList = serializedNode.Split("-");
-
-            if (_index >= nodeList.Length) _index = 0;
-
-            if (nodeList[_index].Contains("empty"))
-            {
-                _index++;
-                return null;
-            }
-
-            var nodeToReturn = new Node(nodeList[_index]);
-            _index++;
-            nodeToReturn.Left = Deserialize(serializedNode);
-            nodeToReturn.Right = Deserialize(serializedNode);
-            return nodeToReturn;
         }
     }
 }

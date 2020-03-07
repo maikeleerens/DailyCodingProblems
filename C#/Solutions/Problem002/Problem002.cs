@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
-namespace Solutions.Problem002
+namespace DailyCodingProblems.Solutions.Problem002
 {
     /// <summary>
     /// This problem was asked by Uber.

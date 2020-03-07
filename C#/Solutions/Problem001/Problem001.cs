@@ -2,7 +2,7 @@
 using System.Linq;
 using Xunit;
 
-namespace Solutions.Problem001
+namespace DailyCodingProblems.Solutions.Problem001
 {
     /// <summary>
     /// This problem was recently asked by Google.

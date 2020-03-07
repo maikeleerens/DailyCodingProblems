@@ -1,10 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Xunit;
 
-namespace Solutions.Problem017
+namespace DailyCodingProblems.Solutions.Problem017
 {
     /// <summary>
     /// This problem was asked by Google.

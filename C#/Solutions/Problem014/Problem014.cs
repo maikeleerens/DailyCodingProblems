@@ -1,7 +1,7 @@
 ﻿using System;
 using Xunit;
 
-namespace Solutions.Problem014
+namespace DailyCodingProblems.Solutions.Problem014
 {
     /// <summary>
     /// This problem was asked by Google.

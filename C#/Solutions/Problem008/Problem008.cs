@@ -1,6 +1,6 @@
 ﻿using Xunit;
 
-namespace Solutions.Problem008
+namespace DailyCodingProblems.Solutions.Problem008
 {
     /// <summary>
     /// This problem was asked by Google.
@@ -52,23 +52,6 @@ namespace Solutions.Problem008
             if (node.Left == null || node.Right == null) return false;
             if (node.Value != node.Left.Value || node.Value != node.Right.Value) return false;
             return IsUniversal(node.Left) && IsUniversal(node.Right);
-        }
-    }
-
-    /// <summary>
-    /// A node in a binary tree
-    /// </summary>
-    public class Node
-    {
-        public string Value { get; }
-        public Node Left { get; }
-        public Node Right { get; }
-
-        public Node(string value, Node left = null, Node right = null)
-        {
-            Value = value;
-            Left = left;
-            Right = right;
         }
     }
 }

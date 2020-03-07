@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xunit;
 
-namespace Solutions.Problem013
+namespace DailyCodingProblems.Solutions.Problem013
 {
     /// <summary>
     /// This problem was asked by Amazon.

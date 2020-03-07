@@ -2,7 +2,7 @@
 using System.Threading;
 using Xunit;
 
-namespace Solutions.Problem010
+namespace DailyCodingProblems.Solutions.Problem010
 {
     /// <summary>
     /// This problem was asked by Apple.

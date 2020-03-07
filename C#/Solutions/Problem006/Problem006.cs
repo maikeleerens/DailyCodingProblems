@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace Solutions.Problem006
+namespace DailyCodingProblems.Solutions.Problem006
 {
     /// <summary>
     /// This problem was asked by Google.
@@ -19,89 +19,14 @@ namespace Solutions.Problem006
         [Fact]
         public void Problem006SolutionTest()
         {
-            var XORList = new XORList<int>();
-            XORList.Add(10);
-            XORList.Add(20);
-            XORList.Add(30);
+            var XorList = new XorList<int>();
+            XorList.Add(10);
+            XorList.Add(20);
+            XorList.Add(30);
 
-            Assert.Equal(10, XORList.Get(0));
-            Assert.Equal(20, XORList.Get(1));
-            Assert.Equal(30, XORList.Get(2));
-        }
-    }
-
-    /// <summary>
-    /// XOR linked list containing <see cref="XORListNode{T}"/>
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class XORList<T>
-    {
-        private readonly IDictionary<int, XORListNode> _memory = new Dictionary<int, XORListNode>();
-        private int _memoryAddress = 1;
-        private bool _hasNodes;
-
-        public void Add(T value)
-        {
-            if (!_hasNodes)
-            {
-                _memory.Add(_memoryAddress, new XORListNode(_memoryAddress, 0, value));
-                _hasNodes = true;
-            }
-            else
-            {
-                var currentNode = _memory[1];
-                var previousNode = (XORListNode) null;
-
-                while (true)
-                {
-                    var nextNodeAddress = currentNode.Both ^ (previousNode?.Address ?? 0);
-                    if (nextNodeAddress == 0) break;
-
-                    previousNode = currentNode;
-                    currentNode = _memory[nextNodeAddress];
-                }
-
-                var nodeToAdd = new XORListNode(_memoryAddress, currentNode.Address, value);
-                currentNode.Both ^= nodeToAdd.Address;
-                _memory.Add(_memoryAddress, nodeToAdd);
-            }
-
-            _memoryAddress++;
-        }
-
-        public T Get(int index)
-        {
-            if (index >= _memory.Count) throw new IndexOutOfRangeException("Index out of bounds");
-            var currentNode = _memory[1];
-            var previousNode = (XORListNode) null;
-
-            for (var i = 0; i < index; i++)
-            {
-                var nextNodeAddress = currentNode.Both ^ (previousNode?.Address ?? 0);
-
-                previousNode = currentNode;
-                currentNode = _memory[nextNodeAddress];
-            }
-
-            return currentNode.Value;
-        }
-
-        /// <summary>
-        /// Nodes in a <see cref="XORList{T}"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        protected internal class XORListNode
-        {
-            public int Address { get; }
-            public int Both { get; set; }
-            public T Value { get; }
-
-            public XORListNode(int address, int both, T value)
-            {
-                Address = address;
-                Both = both;
-                Value = value;
-            }
+            Assert.Equal(10, XorList.Get(0));
+            Assert.Equal(20, XorList.Get(1));
+            Assert.Equal(30, XorList.Get(2));
         }
     }
 }

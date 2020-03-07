@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 
-namespace Solutions.Problem009
+namespace DailyCodingProblems.Solutions.Problem009
 {
     /// <summary>
     /// This problem was asked by Airbnb.

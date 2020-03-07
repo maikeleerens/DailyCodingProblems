@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
 using Xunit;
 
-namespace Solutions.Problem020
+namespace DailyCodingProblems.Solutions.Problem020
 {
     /// <summary>
     /// This problem was asked by Google.
@@ -20,67 +20,63 @@ namespace Solutions.Problem020
         public void Problem020SolutionTest()
         {
             var list1 = new SinglyLinkedList<int>();
-            var list2 = new SinglyLinkedList<int>();
-            list1.AddLast(1);
-            list1.AddLast(2);
             list1.AddLast(3);
+            list1.AddLast(7);
+            list1.AddLast(8);
+            list1.AddLast(10);
 
-            Assert.Equal(3, list1.Length);
+            var list2 = new SinglyLinkedList<int>();
+            list2.AddLast(99);
+            list2.AddLast(1);
+            list2.AddLast(8);
+            list2.AddLast(10);
+
+            Assert.Equal(new SinglyLinkedList<int>.SinglyLinkedListNode(8).Value, GetIntersectionNode(list1, list2).Value);
         }
-    }
 
-    public class SinglyLinkedList<T>
-    {
-        private SinglyLinkedListNode _head;
-        public int Length { get; private set; }
-
-        public void AddLast(T value)
+        public SinglyLinkedList<int>.SinglyLinkedListNode GetIntersectionNode(SinglyLinkedList<int> listA,
+            SinglyLinkedList<int> listB)
         {
-            if (_head == null)
+            var currentA = listA.GetFirst();
+            var currentB = listB.GetFirst();
+
+            if (listA.Length == listB.Length)
             {
-                _head = new SinglyLinkedListNode(value);
+                while (currentA.Value != currentB.Value)
+                {
+                    currentA = currentA.NextNode;
+                    currentB = currentB.NextNode;
+                }
+
+                return currentA;
+            }
+
+            var lengthDifference = Math.Abs(listA.Length - listB.Length);
+            if (listA.Length > listB.Length)
+            {
+                var counter = 0;
+                while (currentA.Value != currentB.Value)
+                {
+                    currentA = currentA.NextNode;
+                    counter++;
+                    if (counter <= lengthDifference) continue;
+                    currentB = currentB.NextNode;
+                }
+
+                return currentA;
             }
             else
             {
-                var current = _head;
-                while (current.NextNode != null)
+                var counter = 0;
+                while (currentA.Value != currentB.Value)
                 {
-                    current = current.NextNode;
+                    currentB = currentB.NextNode;
+                    counter++;
+                    if (counter <= lengthDifference){ continue;}
+                    currentA = currentA.NextNode;
                 }
-                current.NextNode = new SinglyLinkedListNode(value);
-            }
-            Length++;
-        }
 
-        public SinglyLinkedListNode Search(T value)
-        {
-            if (_head == null)
-                return default;
-
-            var current = _head;
-            while (current.NextNode != null)
-            {
-
-                if (EqualityComparer<T>.Default.Equals(current.Value, value))
-                {
-                    return current;
-                }
-                current = current.NextNode;
-            }
-
-            return current;
-        }
-
-
-        public class SinglyLinkedListNode
-        {
-            public T Value { get; }
-            public SinglyLinkedListNode NextNode { get; set; }
-
-            public SinglyLinkedListNode(T value)
-            {
-                Value = value;
-                NextNode = null;
+                return currentA;
             }
         }
     }
