@@ -4,3 +4,7 @@ Java/out/
 C#/.vs/
 C#/bin/
 C#/obj/
+C++/.vs/
+C++/bin/
+*.user
+C++/packages/
