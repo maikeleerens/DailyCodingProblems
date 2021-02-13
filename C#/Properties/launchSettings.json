@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "DailyCodingProblems": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
