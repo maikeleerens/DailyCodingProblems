@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Problem001\**" />
+    <Compile Remove="Problem002\**" />
+    <Compile Remove="Problem003\**" />
+    <Compile Remove="Problem004\**" />
+    <Compile Remove="Problem005\**" />
+    <Compile Remove="Problem006\**" />
+    <Compile Remove="Problem007\**" />
+    <Compile Remove="Problem008\**" />
+    <EmbeddedResource Remove="Problem001\**" />
+    <EmbeddedResource Remove="Problem002\**" />
+    <EmbeddedResource Remove="Problem003\**" />
+    <EmbeddedResource Remove="Problem004\**" />
+    <EmbeddedResource Remove="Problem005\**" />
+    <EmbeddedResource Remove="Problem006\**" />
+    <EmbeddedResource Remove="Problem007\**" />
+    <EmbeddedResource Remove="Problem008\**" />
+    <None Remove="Problem001\**" />
+    <None Remove="Problem002\**" />
+    <None Remove="Problem003\**" />
+    <None Remove="Problem004\**" />
+    <None Remove="Problem005\**" />
+    <None Remove="Problem006\**" />
+    <None Remove="Problem007\**" />
+    <None Remove="Problem008\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
+
+</Project>

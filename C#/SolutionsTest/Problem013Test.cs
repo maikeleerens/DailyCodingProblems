@@ -1,0 +1,21 @@
+﻿using Solutions;
+using Xunit;
+
+namespace SolutionsTest
+{
+    /// <summary>
+    /// This problem was asked by Amazon.
+    /// 
+    /// Given an integer k and a string s, find the length of the longest substring that contains at most k distinct characters.
+    /// 
+    /// For example, given s = "abcba" and k = 2, the longest substring with k distinct characters is "bcb".
+    /// </summary>
+    public class Problem013Test
+    {
+        [Fact]
+        public void Problem013SolutionTest()
+        {
+            Assert.Equal(3, Problem013.LongestSubStringWithDistinctCharacters(2, "abcba"));
+        }
+    }
+}
