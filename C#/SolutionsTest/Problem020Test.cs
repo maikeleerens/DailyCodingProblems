@@ -1,5 +1,4 @@
-﻿using System;
-using Solutions;
+﻿using Solutions;
 using Xunit;
 
 namespace SolutionsTest
